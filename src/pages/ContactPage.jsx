@@ -73,11 +73,11 @@ ${formData.location ? `*Location:* ${formData.location}\n` : ''}*Details:* ${for
 
             <div className="space-y-6 mb-10">
               {[
-                { icon: 'lucide:phone', label: 'Phone Number', value: '+91 97382 89434', href: 'tel:9738289434' },
-                { icon: 'lucide:message-circle', label: 'WhatsApp', value: '+91 97382 89434', href: 'https://wa.me/919738289434' },
-                { icon: 'lucide:mail', label: 'Email Address', value: 'tahinterior@gmail.com', href: 'mailto:tahinterior@gmail.com' },
-                { icon: 'lucide:map-pin', label: 'Location', value: 'Bangalore, Karnataka, India', href: null },
-                { icon: 'lucide:clock', label: 'Working Hours', value: 'Mon – Sat: 9:00 AM – 7:00 PM', href: null },
+                { icon: 'lucide:phone',          label: 'Phone Number',   value: '+91 97382 89434',          href: 'tel:9738289434' },
+                { icon: 'lucide:message-circle',  label: 'WhatsApp',       value: '+91 97382 89434',          href: 'https://wa.me/919738289434' },
+                { icon: 'lucide:mail',            label: 'Email Address',  value: 'tahinterior@gmail.com',    href: 'mailto:tahinterior@gmail.com' },
+                { icon: 'lucide:map-pin',         label: 'Location',       value: 'Yelahanka, Bangalore, Karnataka', href: 'https://www.google.com/maps/place/T.+A.+H+Interior+%26+builders/@13.1154662,77.6044228,732m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3bae1928ed5af713:0x4e84f93ece92c902!8m2!3d13.1154662!4d77.6069977!16s%2Fg%2F11vldg1pq3' },
+                { icon: 'lucide:clock',           label: 'Working Hours',  value: 'Mon – Sat: 9:00 AM – 7:00 PM', href: null },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4">
                   <div className="icon-gold shrink-0">
@@ -100,6 +100,14 @@ ${formData.location ? `*Location:* ${formData.location}\n` : ''}*Details:* ${for
               </a>
               <a href="https://wa.me/919738289434?text=Hi, I'd like to inquire about interior design services." target="_blank" rel="noopener noreferrer" className="btn-outline py-3 px-6 text-sm">
                 <iconify-icon icon="lucide:message-circle"></iconify-icon> WhatsApp Us
+              </a>
+              <a
+                href="https://www.google.com/maps/place/T.+A.+H+Interior+%26+builders/@13.1154662,77.6044228,732m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3bae1928ed5af713:0x4e84f93ece92c902!8m2!3d13.1154662!4d77.6069977!16s%2Fg%2F11vldg1pq3"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline py-3 px-6 text-sm"
+              >
+                <iconify-icon icon="lucide:map-pin"></iconify-icon> Get Directions
               </a>
             </div>
 
@@ -181,6 +189,60 @@ ${formData.location ? `*Location:* ${formData.location}\n` : ''}*Details:* ${for
                 </button>
               </form>
             )}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Google Maps Section ── */}
+      <section className="pb-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* Header */}
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+              <div>
+                <p className="section-eyebrow">Find Us</p>
+                <h2 className="font-serif font-bold text-2xl text-[#1F1F1F]">Visit Our Studio</h2>
+                <div className="gold-line"></div>
+                <p className="text-sm text-[#5C5C5C] mt-2">T.A.H Interior &amp; Builders — Yelahanka, Bangalore, Karnataka</p>
+              </div>
+              <a
+                href="https://www.google.com/maps/place/T.+A.+H+Interior+%26+builders/@13.1154662,77.6044228,732m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3bae1928ed5af713:0x4e84f93ece92c902!8m2!3d13.1154662!4d77.6069977!16s%2Fg%2F11vldg1pq3"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-gold shrink-0"
+              >
+                <iconify-icon icon="lucide:navigation"></iconify-icon> Open in Google Maps
+              </a>
+            </div>
+
+            {/* Map Embed */}
+            <div className="relative rounded-2xl overflow-hidden border border-[#E9DDC7] shadow-xl" style={{ height: '420px' }}>
+              <iframe
+                title="T.A.H Interior & Builders Location"
+                src="https://maps.google.com/maps?q=13.1154662,77.6069977&hl=en&z=16&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0, display: 'block' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              {/* Clickable overlay that opens full Google Maps */}
+              <a
+                href="https://www.google.com/maps/place/T.+A.+H+Interior+%26+builders/@13.1154662,77.6044228,732m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3bae1928ed5af713:0x4e84f93ece92c902!8m2!3d13.1154662!4d77.6069977!16s%2Fg%2F11vldg1pq3"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-4 right-4 bg-white shadow-lg rounded-full px-4 py-2 flex items-center gap-2 text-xs font-ui font-semibold text-[#1F1F1F] hover:bg-[#B88A2A] hover:text-white transition-all duration-300 border border-[#E9DDC7]"
+              >
+                <iconify-icon icon="lucide:external-link" className="text-sm"></iconify-icon>
+                Open Full Map
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
