@@ -1,0 +1,316 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold:        #B88A2A;
+  --color-gold-deep:   #A07820;
+  --color-gold-light:  #D4AF37;
+  --color-gold-pale:   #E8D090;
+  --color-cream:       #FAF7F2;
+  --color-ivory:       #FFFDF8;
+  --color-border:      #E9DDC7;
+  --color-dark:        #1F1F1F;
+  --color-secondary:   #5C5C5C;
+  --color-card:        #FFFFFF;
+
+  --font-serif:   "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  --font-sans:    "Inter", system-ui, sans-serif;
+  --font-ui:      "Poppins", system-ui, sans-serif;
+}
+
+/* =========================================
+   BASE
+   ========================================= */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #FAF7F2;
+    font-size: 16px;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: #1F1F1F;
+    background-color: #FAF7F2;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-serif);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  img { display: block; max-width: 100%; }
+
+  ::selection {
+    background: #D4AF37;
+    color: #fff;
+  }
+}
+
+/* =========================================
+   ICON ANIMATIONS
+   ========================================= */
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(184,138,42,0.45); }
+  70%  { box-shadow: 0 0 0 10px rgba(184,138,42,0); }
+  100% { box-shadow: 0 0 0 0 rgba(184,138,42,0); }
+}
+@keyframes float-icon {
+  0%, 100% { transform: translateY(0px);   }
+  50%       { transform: translateY(-5px); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0) scale(1);    }
+  40%       { transform: translateY(-6px) scale(1.08); }
+  60%       { transform: translateY(-3px) scale(1.04); }
+}
+@keyframes shimmer-gold {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+.icon-float   { animation: float-icon    3s ease-in-out infinite; }
+.icon-pulse   { animation: pulse-ring    2s ease-out   infinite; }
+.icon-spin    { animation: spin-slow     8s linear     infinite; }
+.icon-bounce  { animation: bounce-gentle 1.8s ease-in-out infinite; }
+
+
+/* =========================================
+   COMPONENTS
+   ========================================= */
+@layer components {
+
+  /* — Buttons — */
+  .btn-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2.25rem;
+    background: linear-gradient(135deg, #C9981E 0%, #B88A2A 50%, #A07820 100%);
+    color: #fff;
+    font-family: var(--font-ui);
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.08em;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(184,138,42,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .btn-gold:hover {
+    background: linear-gradient(135deg, #D4AF37 0%, #C9981E 50%, #B88A2A 100%);
+    box-shadow: 0 8px 28px rgba(184,138,42,0.45);
+    transform: translateY(-3px);
+  }
+  .btn-gold:active { transform: translateY(-1px); }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2.25rem;
+    background: transparent;
+    color: #B88A2A;
+    font-family: var(--font-ui);
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.08em;
+    border-radius: 9999px;
+    border: 2px solid #B88A2A;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .btn-outline:hover {
+    background: linear-gradient(135deg, #C9981E 0%, #B88A2A 100%);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 8px 28px rgba(184,138,42,0.35);
+    transform: translateY(-3px);
+  }
+  .btn-outline:active { transform: translateY(-1px); }
+
+  /* White variant (used on dark backgrounds) */
+  .btn-outline-white {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2.25rem;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-family: var(--font-ui);
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.08em;
+    border-radius: 9999px;
+    border: 1.5px solid rgba(255,255,255,0.65);
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .btn-outline-white:hover {
+    background: rgba(255,255,255,0.25);
+    border-color: #fff;
+  }
+
+  /* — Section Titles — */
+  .section-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-ui);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #B88A2A;
+    margin-bottom: 1rem;
+  }
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 2.5rem;
+    height: 2px;
+    background: #B88A2A;
+    flex-shrink: 0;
+  }
+
+  .section-heading {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #1F1F1F;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .section-subheading {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    color: #5C5C5C;
+    line-height: 1.75;
+    max-width: 42rem;
+  }
+
+  /* — Cards — */
+  .card-luxury {
+    background: #fff;
+    border: 1px solid #E9DDC7;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(184,138,42,0.06);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .card-luxury:hover {
+    box-shadow: 0 12px 40px rgba(184,138,42,0.14);
+    transform: translateY(-4px);
+  }
+
+  /* — Forms — */
+  .input-luxury {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    border: 1.5px solid #E9DDC7;
+    border-radius: 6px;
+    background: #FFFDF8;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: #1F1F1F;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    outline: none;
+  }
+  .input-luxury:focus {
+    border-color: #B88A2A;
+    box-shadow: 0 0 0 3px rgba(184,138,42,0.12);
+  }
+  .input-luxury::placeholder { color: #b0a898; }
+
+  /* — Scrollbar — */
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* — Gold Divider — */
+  .gold-line {
+    width: 3rem;
+    height: 2px;
+    background: linear-gradient(to right, #B88A2A, #D4AF37);
+    border-radius: 2px;
+    margin: 1.25rem 0;
+  }
+
+  /* — Icon Wrapper — */
+  .icon-gold {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 10px;
+    background: rgba(184,138,42,0.08);
+    border: 1px solid rgba(184,138,42,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #B88A2A;
+    transition: background 0.25s ease;
+  }
+  .icon-gold:hover, .group:hover .icon-gold { background: #B88A2A; color: #fff; }
+
+  /* — Nav link — */
+  .nav-link {
+    position: relative;
+    font-family: var(--font-ui);
+    font-weight: 500;
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    color: #1F1F1F;
+    transition: color 0.2s;
+    padding-bottom: 4px;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: #B88A2A;
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover { color: #B88A2A; }
+  .nav-link:hover::after { width: 100%; }
+
+  .nav-link-hero {
+    position: relative;
+    font-family: var(--font-ui);
+    font-weight: 500;
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.9);
+    transition: color 0.2s;
+    padding-bottom: 4px;
+  }
+  .nav-link-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: #D4AF37;
+    transition: width 0.3s ease;
+  }
+  .nav-link-hero:hover { color: #D4AF37; }
+  .nav-link-hero:hover::after { width: 100%; }
+}
