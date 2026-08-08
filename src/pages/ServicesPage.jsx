@@ -6,84 +6,88 @@ const fadeUp = (delay = 0) => ({
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] } }
 });
 
-const allServices = [
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } }
+};
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+};
+
+const services = [
   {
-    category: 'Residential Interior',
+    id: 'residential-interior',
     icon: 'lucide:home',
+    title: 'Residential Interior',
+    desc: 'Smart modular kitchens, wardrobes, living rooms, false ceilings — a complete home transformation.',
     image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=700&q=80',
-    items: [
-      { id: 'modular-kitchen', name: 'Modular Kitchen', desc: 'L-shaped, U-shaped, parallel & island kitchens with premium finishes.' },
-      { id: 'wardrobes', name: 'Wardrobes & Storage', desc: 'Sliding, swing & walk-in wardrobes with smart storage solutions.' },
-      { id: 'living-room', name: 'Living Room Design', desc: 'TV units, feature walls, seating arrangements & complete living spaces.' },
-      { id: 'bedroom', name: 'Bedroom Design', desc: 'Master, guest & kids bedroom designs with custom furniture.' },
-      { id: 'false-ceiling', name: 'False Ceiling & Lighting', desc: 'Gypsum, POP, wooden & grid false ceilings with ambient lighting.' },
-      { id: 'wall-paneling', name: 'Wall Paneling & Wallpaper', desc: 'Decorative wall panels, textured wallpapers & accent walls.' },
-    ]
+    link: '/service/residential-interior',
   },
   {
-    category: 'Commercial Interior',
+    id: 'commercial-interior',
     icon: 'lucide:building-2',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80',
-    items: [
-      { id: 'office-interior', name: 'Office Interior', desc: 'Modern workspaces, cabins, conference rooms & reception areas.' },
-      { id: 'retail-stores', name: 'Retail & Showrooms', desc: 'Premium retail fit-outs for shops, boutiques & showrooms.' },
-      { id: 'restaurants', name: 'Restaurants & Cafes', desc: 'Theme-based dining spaces with custom furniture & lighting.' },
-      { id: 'clinics', name: 'Clinics & Hospitals', desc: 'Hygienic, calming medical interiors for hospitals & clinics.' },
-    ]
+    title: 'Commercial Interior',
+    desc: 'Restaurants, cafés, retail shops, offices & showrooms — theme-based commercial spaces built to impress and drive business.',
+    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&q=80',
+    badge: 'Popular',
+    link: '/service/commercial-interior',
   },
   {
-    category: 'Construction & Architecture',
+    id: 'architectural-design',
+    icon: 'lucide:drafting-compass',
+    title: 'Architectural Design',
+    desc: 'Precise 2D floor plans, elevation drawings, and photo-realistic 3D renders & walkthroughs for homes and commercial spaces.',
+    image: '/images/arch-2d-design.png',
+    badge: 'New',
+    link: '/service/architectural-design',
+  },
+  {
+    id: 'construction',
     icon: 'lucide:hard-hat',
+    title: 'Construction & Building',
+    desc: 'House & villa construction, structural drawings, BBMP approvals, and full project management.',
     image: '/images/construction.png',
-    items: [
-      { id: 'house-construction', name: 'House Construction', desc: 'Complete residential building construction from foundation to finish.' },
-      { id: 'villa-construction', name: 'Villa Construction', desc: 'Luxury villa construction with premium materials and modern design.' },
-      { id: 'building-plan', name: 'Building Plan & Approval', desc: 'Architectural plans, BBMP approvals & structural drawings.' },
-      { id: 'architecture', name: 'Architecture & Design', desc: '3D architectural visualizations, floor plans & working drawings.' },
-      { id: 'project-management', name: 'Project Management', desc: 'End-to-end site supervision and construction management.' },
-    ]
+    link: '/service/construction',
   },
   {
-    category: 'Renovation & Repair',
+    id: 'home-renovation',
     icon: 'lucide:hammer',
+    title: 'Home Renovation',
+    desc: 'Kitchen & bathroom remodels, painting, waterproofing, flooring, and structural alterations.',
     image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=700&q=80',
-    items: [
-      { id: 'home-renovation', name: 'Home Renovation', desc: 'Complete home makeovers including civil, electrical & plumbing.' },
-      { id: 'kitchen-remodel', name: 'Kitchen Remodelling', desc: 'Full kitchen renovation with new layout, tiles, plumbing & fixtures.' },
-      { id: 'bathroom-renovation', name: 'Bathroom Renovation', desc: 'Premium bathroom transformation with modern fixtures & tiling.' },
-      { id: 'painting', name: 'Interior & Exterior Painting', desc: 'Professional painting services with premium brands like Asian Paints.' },
-      { id: 'waterproofing', name: 'Waterproofing', desc: 'Terrace, bathroom & wall waterproofing with long-term warranties.' },
-      { id: 'flooring', name: 'Flooring & Tile Work', desc: 'Marble, vitrified, wooden & vinyl flooring installation.' },
-    ]
+    link: '/service/home-renovation',
   },
   {
-    category: 'Glass & Aluminium',
+    id: 'aluminium-kitchen',
+    icon: 'lucide:utensils',
+    title: 'Aluminium Kitchen Works',
+    desc: 'Rust-proof, termite-resistant aluminium modular kitchens with PU-coated shutters & soft-close mechanisms.',
+    image: '/images/aluminium-kitchen.png',
+    badge: 'Specialty',
+    link: '/service/aluminium-kitchen',
+  },
+  {
+    id: 'glass-aluminium',
     icon: 'lucide:layout-panel-left',
+    title: 'Glass & Aluminium',
+    desc: 'Toughened glass partitions, sliding doors, uPVC windows, ACP cladding, and metal fabrication.',
     image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80',
-    items: [
-      { id: 'glass-aluminium', name: 'Glass Partitions', desc: 'Toughened & frosted glass partitions for offices and homes.' },
-      { id: 'upvc-windows', name: 'uPVC Windows & Doors', desc: 'Energy-efficient uPVC systems for homes and commercial spaces.' },
-      { id: 'acp-cladding', name: 'ACP Cladding', desc: 'Aluminium composite panel cladding for exterior facades.' },
-      { id: 'metal-fabrication', name: 'Metal Fabrication', desc: 'Custom SS railings, gates, grills & structural steel work.' },
-    ]
+    link: '/service/glass-aluminium',
   },
   {
-    category: 'Outdoor & Printing',
+    id: 'outdoor-structures',
     icon: 'lucide:tree-pine',
+    title: 'Outdoor & Pergola',
+    desc: 'Beautiful terrace pergolas, garden shade structures, gates, railings, and outdoor fabrication.',
     image: '/images/outdoor.png',
-    items: [
-      { id: 'outdoor-structures', name: 'Pergola & Shade Structures', desc: 'Garden pergolas, patio covers & outdoor shade structures.' },
-      { id: 'gates-railings', name: 'Gates & Railings', desc: 'MS & SS compound gates, staircase railings & balcony railing.' },
-      { id: 'printing', name: 'Printing & Branding', desc: 'Flex boards, backlit signage, vinyl wraps & office branding.' },
-      { id: 'tile-marble', name: 'Tile & Marble Work', desc: 'Premium marble, granite & tile laying for all areas.' },
-    ]
+    link: '/service/outdoor-structures',
   },
 ];
 
 export function ServicesPage() {
   return (
     <div className="bg-[#FAF7F2] min-h-screen">
-
       {/* ── Hero Banner ── */}
       <div className="relative bg-[#1F1F1F] pt-36 pb-20 px-6 lg:px-12 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -97,7 +101,7 @@ export function ServicesPage() {
             Comprehensive Design &amp; Construction <span className="text-[#D4AF37] italic">Solutions</span>
           </motion.h1>
           <motion.p variants={fadeUp(0.2)} initial="hidden" animate="visible" className="text-white/65 text-base max-w-xl leading-relaxed mb-8">
-            From residential interiors to full building construction — every service you need, delivered with artisanal quality across Bangalore.
+            From residential interiors to restaurants, cafés, retail shops, architectural 2D/3D design and aluminium kitchen works — every service you need, delivered with artisanal quality across Bangalore.
           </motion.p>
           <motion.div variants={fadeUp(0.3)} initial="hidden" animate="visible" className="flex flex-wrap gap-4">
             <Link to="/contact" className="btn-gold">Get Free Quote</Link>
@@ -106,59 +110,50 @@ export function ServicesPage() {
         </div>
       </div>
 
-      {/* ── Service Categories ── */}
-      {allServices.map((group, gi) => (
-        <section key={group.category} className={`py-20 ${gi % 2 === 0 ? 'bg-white' : 'bg-[#FAF7F2]'}`}>
-          <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <div className="flex flex-col lg:flex-row gap-12 items-start">
-
-              {/* Category header */}
-              <motion.div
-                variants={fadeUp(0)}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="lg:w-72 shrink-0"
-              >
-                <div className="sticky top-28">
-                  <div className="relative h-48 rounded-2xl overflow-hidden mb-6 shadow-lg">
-                    <img src={group.image} alt={group.category} className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-5">
-                      <iconify-icon icon={group.icon} className="text-3xl text-[#D4AF37]"></iconify-icon>
+      {/* ── Grid ── */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          >
+            {services.map((svc) => (
+              <motion.div key={svc.id} variants={cardVariants} className="group h-full">
+                <Link to={svc.link} className="block card-luxury overflow-hidden h-full flex flex-col">
+                  <div className="relative h-56 shrink-0 overflow-hidden">
+                    <img
+                      src={svc.image}
+                      alt={svc.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-400"></div>
+                    <div className="absolute bottom-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-lg flex items-center justify-center shadow-md">
+                      <iconify-icon icon={svc.icon} className="text-xl text-[#B88A2A]"></iconify-icon>
                     </div>
+                    {svc.badge && (
+                      <div className={`absolute top-4 right-4 text-[10px] font-ui font-bold tracking-widest uppercase px-3 py-1.5 rounded-full shadow-sm ${
+                        svc.badge === 'New' ? 'bg-emerald-500 text-white' :
+                        svc.badge === 'Popular' ? 'bg-indigo-500 text-white' :
+                        'bg-[#B88A2A] text-white'
+                      }`}>{svc.badge}</div>
+                    )}
                   </div>
-                  <h2 className="font-serif font-bold text-2xl text-[#1F1F1F] mb-3">{group.category}</h2>
-                  <div className="gold-line"></div>
-                  <Link to="/contact" className="btn-gold w-full text-center py-3 text-sm mt-4">
-                    Get Quote
-                  </Link>
-                </div>
+                  <div className="p-6 flex flex-col flex-grow">
+                    <h3 className="font-serif font-bold text-xl text-[#1F1F1F] mb-3 group-hover:text-[#B88A2A] transition-colors leading-tight">{svc.title}</h3>
+                    <p className="text-sm text-[#5C5C5C] leading-relaxed mb-6 flex-grow">{svc.desc}</p>
+                    <span className="inline-flex items-center gap-1.5 text-[#B88A2A] font-ui font-semibold text-xs group-hover:gap-3 transition-all duration-300 mt-auto">
+                      Explore Service <iconify-icon icon="lucide:arrow-right"></iconify-icon>
+                    </span>
+                  </div>
+                </Link>
               </motion.div>
-
-              {/* Service items grid */}
-              <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-5">
-                {group.items.map((item, i) => (
-                  <motion.div
-                    key={item.id}
-                    variants={fadeUp(i * 0.08)}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                  >
-                    <Link to={`/service/${item.id}`} className="block card-luxury p-6 h-full group">
-                      <h3 className="font-serif font-bold text-lg text-[#1F1F1F] group-hover:text-[#B88A2A] transition-colors mb-2">{item.name}</h3>
-                      <p className="text-sm text-[#5C5C5C] leading-relaxed mb-4">{item.desc}</p>
-                      <span className="inline-flex items-center gap-1.5 text-[#B88A2A] font-ui font-semibold text-xs group-hover:gap-3 transition-all duration-300">
-                        Learn More <iconify-icon icon="lucide:arrow-right"></iconify-icon>
-                      </span>
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-      ))}
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
       {/* ── CTA ── */}
       <section className="py-20 bg-[#1F1F1F] text-center px-6">

@@ -22,18 +22,39 @@ const getServiceDetails = (id) => {
     'outdoor-structures': '/images/outdoor.png',
     'gates-railings': '/images/outdoor.png',
     'printing': '/images/outdoor.png',
-    'tile-marble': '/images/outdoor.png'
+    'tile-marble': '/images/outdoor.png',
+    'architectural-design': '/images/arch-3d-render.png',
+    'aluminium-kitchen': '/images/aluminium-kitchen.png'
+  };
+
+  const galleries = {
+    'commercial-interior': [
+      { title: 'Restaurant Interior', image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80' },
+      { title: 'Café & Coffee Shop', image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80' },
+      { title: 'Retail Stores', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80' }
+    ],
+    'architectural-design': [
+      { title: '2D Floor Plans', image: '/images/arch-2d-design.png' },
+      { title: '3D Architectural Renders', image: '/images/arch-3d-render.png' },
+      { title: 'Structural Elevations', image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80' }
+    ],
+    'aluminium-kitchen': [
+      { title: 'PU Coated Aluminium', image: '/images/aluminium-kitchen.png' },
+      { title: 'Rust-Proof Cabinets', image: 'https://images.unsplash.com/photo-1556910103-1c02745a872f?w=800&q=80' },
+      { title: 'Soft-Close Mechanisms', image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80' }
+    ]
   };
 
   return {
     title: id.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
-    image: images[id] || 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1600&q=80'
+    image: images[id] || 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1600&q=80',
+    gallery: galleries[id] || []
   };
 };
 
 export function ServicePage() {
   const { serviceId } = useParams();
-  const { title, image } = getServiceDetails(serviceId);
+  const { title, image, gallery } = getServiceDetails(serviceId);
 
   return (
     <div className="bg-[#FAF7F2] min-h-screen">
@@ -58,7 +79,7 @@ export function ServicePage() {
       </div>
 
       {/* ── Content Section ── */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 -mt-16 relative z-10 pb-24">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 -mt-16 relative z-10 pb-20">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -128,6 +149,37 @@ export function ServicePage() {
           </div>
         </motion.div>
       </div>
+
+      {/* ── Dynamic Gallery Section ── */}
+      {gallery && gallery.length > 0 && (
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 pb-24">
+          <div className="text-center mb-12">
+            <h2 className="font-serif font-bold text-3xl text-[#1F1F1F] mb-4">Explore {title}</h2>
+            <div className="w-16 h-px bg-[#D4AF37] mx-auto mb-4"></div>
+            <p className="text-[#5C5C5C] text-sm">A glimpse into our specialized work and capabilities.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {gallery.map((item, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="group relative h-72 rounded-2xl overflow-hidden shadow-lg"
+              >
+                <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 right-6">
+                  <h3 className="text-white font-serif font-bold text-xl mb-1">{item.title}</h3>
+                  <div className="w-8 h-0.5 bg-[#D4AF37] transition-all duration-300 group-hover:w-16"></div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      )}
       
     </div>
   );

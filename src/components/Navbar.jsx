@@ -3,50 +3,14 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const servicesMenu = [
-  {
-    title: "Residential Interior",
-    links: [
-      { label: "Modular Kitchen", id: "modular-kitchen" },
-      { label: "Wardrobes", id: "wardrobes" },
-      { label: "Living Room", id: "living-room" },
-      { label: "Bedroom", id: "bedroom" },
-      { label: "False Ceiling", id: "false-ceiling" },
-      { label: "Wall Paneling", id: "wall-paneling" },
-    ]
-  },
-  {
-    title: "Construction",
-    links: [
-      { label: "House Construction", id: "house-construction" },
-      { label: "Villa Construction", id: "villa-construction" },
-      { label: "Building Plan", id: "building-plan" },
-      { label: "Architecture", id: "architecture" },
-      { label: "Project Management", id: "project-management" },
-      { label: "Structural Drawing", id: "structural-drawing" },
-    ]
-  },
-  {
-    title: "Commercial & Renovation",
-    links: [
-      { label: "Office Interior", id: "office-interior" },
-      { label: "Retail Stores", id: "retail-stores" },
-      { label: "Home Renovation", id: "home-renovation" },
-      { label: "Painting", id: "painting" },
-      { label: "Waterproofing", id: "waterproofing" },
-      { label: "Flooring & Tiles", id: "flooring" },
-    ]
-  },
-  {
-    title: "Specialised Works",
-    links: [
-      { label: "Glass & Partitions", id: "glass-aluminium" },
-      { label: "uPVC Windows", id: "upvc-windows" },
-      { label: "Pergola & Outdoor", id: "outdoor-structures" },
-      { label: "Metal Fabrication", id: "metal-fabrication" },
-      { label: "Printing & Branding", id: "printing" },
-      { label: "Tile & Marble", id: "tile-marble" },
-    ]
-  },
+  { label: "Residential Interior", id: "residential-interior" },
+  { label: "Commercial Interior", id: "commercial-interior" },
+  { label: "Architectural Design", id: "architectural-design" },
+  { label: "Construction & Building", id: "construction" },
+  { label: "Home Renovation", id: "home-renovation" },
+  { label: "Aluminium Kitchen Works", id: "aluminium-kitchen" },
+  { label: "Glass & Aluminium", id: "glass-aluminium" },
+  { label: "Outdoor & Pergola", id: "outdoor-structures" },
 ];
 
 export function Navbar() {
@@ -112,28 +76,18 @@ export function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 12 }}
                   transition={{ duration: 0.2, ease: 'easeOut' }}
-                  className="absolute top-full left-1/2 -translate-x-1/2 w-[820px] bg-[#FFFDF8] border border-[#E9DDC7] rounded-2xl shadow-2xl p-8 grid grid-cols-4 gap-6"
+                  className="absolute top-full left-0 w-64 bg-[#FFFDF8] border border-[#E9DDC7] rounded-2xl shadow-2xl py-4 flex flex-col"
                   style={{ boxShadow: '0 24px 60px rgba(184,138,42,0.12)' }}
                 >
-                  {servicesMenu.map((group, i) => (
-                    <div key={i}>
-                      <h5 className="font-ui font-semibold text-xs tracking-widest uppercase text-[#B88A2A] mb-4 pb-2 border-b border-[#E9DDC7]">
-                        {group.title}
-                      </h5>
-                      <ul className="space-y-2.5">
-                        {group.links.map((link) => (
-                          <li key={link.id}>
-                            <Link
-                              to={`/service/${link.id}`}
-                              className="text-sm text-[#5C5C5C] hover:text-[#B88A2A] transition-colors flex items-center gap-1.5"
-                            >
-                              <iconify-icon icon="lucide:chevron-right" className="text-[#B88A2A] text-xs"></iconify-icon>
-                              {link.label}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                  {servicesMenu.map((link) => (
+                    <Link
+                      key={link.id}
+                      to={`/service/${link.id}`}
+                      className="px-6 py-2.5 text-sm text-[#5C5C5C] hover:text-[#B88A2A] hover:bg-[#FAF7F2] transition-colors flex items-center gap-2"
+                    >
+                      <iconify-icon icon="lucide:chevron-right" className="text-[#B88A2A] text-xs"></iconify-icon>
+                      {link.label}
+                    </Link>
                   ))}
                 </motion.div>
               )}
