@@ -3,14 +3,14 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const servicesMenu = [
-  { label: "Residential Interior", id: "residential-interior" },
-  { label: "Commercial Interior", id: "commercial-interior" },
-  { label: "Architectural Design", id: "architectural-design" },
-  { label: "Construction & Building", id: "construction" },
-  { label: "Home Renovation", id: "home-renovation" },
-  { label: "Aluminium Kitchen Works", id: "aluminium-kitchen" },
-  { label: "Glass & Aluminium", id: "glass-aluminium" },
-  { label: "Outdoor & Pergola", id: "outdoor-structures" },
+  { label: "Commercial Interior", id: "commercial-interior", featured: true },
+  { label: "Residential Interior", id: "residential-interior", featured: true },
+  { label: "Architectural Design", id: "architectural-design", featured: true },
+  { label: "Aluminium Kitchen Works", id: "aluminium-kitchen", featured: true },
+  { label: "Construction & Building", id: "construction", featured: false },
+  { label: "Home Renovation", id: "home-renovation", featured: false },
+  { label: "Glass & Aluminium", id: "glass-aluminium", featured: false },
+  { label: "Outdoor & Pergola", id: "outdoor-structures", featured: false },
 ];
 
 export function Navbar() {
@@ -83,10 +83,19 @@ export function Navbar() {
                     <Link
                       key={link.id}
                       to={`/service/${link.id}`}
-                      className="px-6 py-2.5 text-sm text-[#5C5C5C] hover:text-[#B88A2A] hover:bg-[#FAF7F2] transition-colors flex items-center gap-2"
+                      className={`px-5 py-2 text-sm transition-colors flex items-center justify-between ${
+                        link.featured
+                          ? 'text-[#1F1F1F] font-semibold hover:text-[#B88A2A] hover:bg-[#FAF7F2]'
+                          : 'text-[#5C5C5C] hover:text-[#B88A2A] hover:bg-[#FAF7F2]'
+                      }`}
                     >
-                      <iconify-icon icon="lucide:chevron-right" className="text-[#B88A2A] text-xs"></iconify-icon>
-                      {link.label}
+                      <span className="flex items-center gap-2">
+                        <iconify-icon icon="lucide:chevron-right" className="text-[#B88A2A] text-xs"></iconify-icon>
+                        {link.label}
+                      </span>
+                      {link.featured && (
+                        <iconify-icon icon="lucide:star" className="text-[#D4AF37] text-xs shrink-0"></iconify-icon>
+                      )}
                     </Link>
                   ))}
                 </motion.div>

@@ -10,11 +10,11 @@ const galleryImages = [
   { id: 5,  category: 'Construction', title: 'Villa Structure',     image: '/images/construction.png' },
   { id: 6,  category: 'Outdoor',      title: 'Garden Pergola',      image: '/images/outdoor.png' },
   { id: 7,  category: 'Living Room',  title: 'Minimalist Lounge',   image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&q=80' },
-  { id: 8,  category: 'Commercial',   title: 'Boutique Store',      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=80' },
-  { id: 9,  category: 'Kitchen',      title: 'Modular Kitchen',     image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80' },
-  { id: 10, category: 'Bedroom',      title: 'Cozy Kids Room',      image: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80' },
-  { id: 11, category: 'Living Room',  title: 'Contemporary Hall',   image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80' },
-  { id: 12, category: 'Commercial',   title: 'Restaurant Interior', image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80' },
+  { id: 8,  category: 'Commercial',   title: 'Boutique Store',      image: '/images/retail-shop.png' },
+  { id: 9,  category: 'Kitchen',      title: 'Modular Kitchen',     image: '/images/aluminium-kitchen.png' },
+  { id: 10, category: 'Bedroom',      title: 'Cozy Kids Room',      image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=80' },
+  { id: 11, category: 'Living Room',  title: 'Contemporary Hall',   image: '/images/arch-3d-render.png' },
+  { id: 12, category: 'Commercial',   title: 'Restaurant Interior', image: '/images/restaurant-cafe.png' },
 ];
 
 // Duplicate for seamless infinite loop
@@ -51,6 +51,7 @@ function InfiniteStrip({ items, reverse = false }) {
             <img
               src={img.image}
               alt={img.title}
+              onError={(e) => { e.currentTarget.src = '/images/arch-3d-render.png'; }}
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

@@ -16,23 +16,13 @@ const stats = [
 ];
 
 export function Hero() {
-  const [imgLoaded,      setImgLoaded]      = useState(false);
-  const [overlayVisible, setOverlayVisible]  = useState(false);
+  const [imgLoaded, setImgLoaded] = useState(true);
+  const [overlayVisible, setOverlayVisible] = useState(true);
 
   useEffect(() => {
-    // ── Step 1: Preload the hero image silently in the background ──
-    const img = new Image();
-    img.src = HERO_IMAGE;
-
-    // ── Step 2: Wait for the loading screen to fully finish ──
-    // LoadingScreen is visible for 2400ms, then fades out over 600ms = 3000ms total
-    // We start showing the hero image right as the loader fades away
-    const revealTimer = setTimeout(() => {
-      setImgLoaded(true);                          // background image fades in
-      setTimeout(() => setOverlayVisible(true), 400); // then letters pop
-    }, 3000);
-
-    return () => clearTimeout(revealTimer);
+    // Ensure image and text reveal immediately on mount/navigation
+    setImgLoaded(true);
+    setOverlayVisible(true);
   }, []);
 
   return (

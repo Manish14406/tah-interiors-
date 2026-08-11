@@ -14,13 +14,13 @@ const projects = [
   { id: 2, category: 'Kitchen', title: 'Premium Modular Kitchen', location: 'Koramangala', image: 'https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=700&q=80' },
   { id: 3, category: 'Commercial', title: 'Corporate Office Interior', location: 'MG Road', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80' },
   { id: 4, category: 'Bedroom', title: 'Elegant Master Suite', location: 'Indiranagar', image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=700&q=80' },
-  { id: 5, category: 'Construction', title: 'Villa Construction', location: 'Electronic City', image: 'https://images.unsplash.com/photo-1541888086925-0c144eb9857d?w=700&q=80' },
-  { id: 6, category: 'Outdoor', title: 'Garden Pergola', location: 'Hebbal', image: 'https://images.unsplash.com/photo-1595844730298-b960fa25fa82?w=700&q=80' },
+  { id: 5, category: 'Construction', title: 'Villa Construction', location: 'Electronic City', image: '/images/construction.png' },
+  { id: 6, category: 'Outdoor', title: 'Garden Pergola', location: 'Hebbal', image: '/images/outdoor.png' },
   { id: 7, category: 'Living Room', title: 'Minimalist Living Space', location: 'HSR Layout', image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=700&q=80' },
-  { id: 8, category: 'Commercial', title: 'Premium Boutique Store', location: 'Brigade Road', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=700&q=80' },
-  { id: 9, category: 'Bedroom', title: 'Kids Room Design', location: 'Jayanagar', image: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=700&q=80' },
-  { id: 10, category: 'Kitchen', title: 'Open Plan Kitchen', location: 'Marathahalli', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80' },
-  { id: 11, category: 'Construction', title: 'Residential Building', location: 'Banashankari', image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&q=80' },
+  { id: 8, category: 'Commercial', title: 'Premium Boutique Store', location: 'Brigade Road', image: '/images/retail-shop.png' },
+  { id: 9, category: 'Bedroom', title: 'Kids Room Design', location: 'Jayanagar', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=700&q=80' },
+  { id: 10, category: 'Kitchen', title: 'Open Plan Kitchen', location: 'Marathahalli', image: '/images/aluminium-kitchen.png' },
+  { id: 11, category: 'Construction', title: 'Residential Building', location: 'Banashankari', image: '/images/arch-3d-render.png' },
   { id: 12, category: 'Outdoor', title: 'Rooftop Terrace', location: 'JP Nagar', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80' },
 ];
 
@@ -83,7 +83,12 @@ export function GalleryPage() {
                   transition={{ duration: 0.35 }}
                   className="relative aspect-square rounded-xl overflow-hidden group cursor-pointer border border-[#E9DDC7] shadow-sm"
                 >
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    onError={(e) => { e.currentTarget.src = '/images/arch-3d-render.png'; }}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
                     <p className="font-ui text-[10px] tracking-widest uppercase text-[#D4AF37] mb-1">{project.category} · {project.location}</p>

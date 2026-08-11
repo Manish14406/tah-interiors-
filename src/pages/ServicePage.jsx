@@ -29,19 +29,24 @@ const getServiceDetails = (id) => {
 
   const galleries = {
     'commercial-interior': [
-      { title: 'Restaurant Interior', image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80' },
+      { title: 'Restaurant Interior', image: '/images/restaurant-cafe.png' },
       { title: 'Café & Coffee Shop', image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80' },
-      { title: 'Retail Stores', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80' }
+      { title: 'Retail Stores & Showrooms', image: '/images/retail-shop.png' }
+    ],
+    'residential-interior': [
+      { title: 'Modular Kitchen & Dining', image: 'https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=800&q=80' },
+      { title: 'Luxury Living Room', image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80' },
+      { title: 'Modern Bedroom & Wardrobe', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80' }
     ],
     'architectural-design': [
-      { title: '2D Floor Plans', image: '/images/arch-2d-design.png' },
+      { title: '2D Floor Plans & Layouts', image: '/images/arch-2d-design.png' },
       { title: '3D Architectural Renders', image: '/images/arch-3d-render.png' },
-      { title: 'Structural Elevations', image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80' }
+      { title: 'Elevation & Structural Plan', image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80' }
     ],
     'aluminium-kitchen': [
-      { title: 'PU Coated Aluminium', image: '/images/aluminium-kitchen.png' },
-      { title: 'Rust-Proof Cabinets', image: 'https://images.unsplash.com/photo-1556910103-1c02745a872f?w=800&q=80' },
-      { title: 'Soft-Close Mechanisms', image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80' }
+      { title: 'PU Coated Aluminium Kitchen', image: '/images/aluminium-kitchen.png' },
+      { title: 'Rust-Proof Modular Cabinets', image: 'https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=800&q=80' },
+      { title: 'Soft-Close Hardware & Drawers', image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80' }
     ]
   };
 
@@ -169,7 +174,12 @@ export function ServicePage() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="group relative h-72 rounded-2xl overflow-hidden shadow-lg"
               >
-                <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  onError={(e) => { e.currentTarget.src = '/images/arch-3d-render.png'; }}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <div className="absolute bottom-6 left-6 right-6">
                   <h3 className="text-white font-serif font-bold text-xl mb-1">{item.title}</h3>
