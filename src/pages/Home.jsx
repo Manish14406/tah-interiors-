@@ -7,6 +7,7 @@ import { ProjectGallery } from '../components/home/ProjectGallery';
 import { Testimonials } from '../components/home/Testimonials';
 import { FAQ } from '../components/home/FAQ';
 import { Contact } from '../components/home/Contact';
+import { CostCalculator } from '../components/home/CostCalculator';
 
 export function Home() {
   return (
@@ -14,6 +15,7 @@ export function Home() {
       <Hero />
       <About />
       <ServicesOverview />
+      <CostCalculator />
       <WhyChooseUs />
       <ProjectProcess />
       <ProjectGallery />
