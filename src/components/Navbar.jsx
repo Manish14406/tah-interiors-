@@ -10,7 +10,7 @@ const servicesMenu = [
   { label: "Construction & Building", id: "construction", featured: false },
   { label: "Home Renovation", id: "home-renovation", featured: false },
   { label: "Glass & Aluminium", id: "glass-aluminium", featured: false },
-  { label: "Outdoor & Pergola", id: "outdoor-structures", featured: false },
+  { label: "Ceiling Designs", id: "ceiling-designs", featured: false },
 ];
 
 export function Navbar() {

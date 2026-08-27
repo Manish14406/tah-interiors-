@@ -7,7 +7,7 @@ const fadeUp = (delay = 0) => ({
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] } }
 });
 
-const categories = ['All', 'Living Room', 'Kitchen', 'Bedroom', 'Commercial', 'Construction', 'Outdoor'];
+const categories = ['All', 'Living Room', 'Kitchen', 'Bedroom', 'Commercial', 'Construction', 'Ceiling'];
 
 const projects = [
   { id: 1, category: 'Living Room', title: 'Modern Luxury Lounge', location: 'Whitefield', image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=700&q=80' },
@@ -15,13 +15,13 @@ const projects = [
   { id: 3, category: 'Commercial', title: 'Corporate Office Interior', location: 'MG Road', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80' },
   { id: 4, category: 'Bedroom', title: 'Elegant Master Suite', location: 'Indiranagar', image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=700&q=80' },
   { id: 5, category: 'Construction', title: 'Villa Construction', location: 'Electronic City', image: '/images/villa-construction.png' },
-  { id: 6, category: 'Outdoor', title: 'Garden Pergola', location: 'Hebbal', image: '/images/garden-pergola.png' },
+  { id: 6, category: 'Ceiling', title: 'Curved Cove Ceiling', location: 'Hebbal', image: '/images/ceiling-curved.png' },
   { id: 7, category: 'Living Room', title: 'Minimalist Living Space', location: 'HSR Layout', image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=700&q=80' },
   { id: 8, category: 'Commercial', title: 'Premium Boutique Store', location: 'Brigade Road', image: '/images/retail-shop.png' },
   { id: 9, category: 'Bedroom', title: 'Kids Room Design', location: 'Jayanagar', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=700&q=80' },
   { id: 10, category: 'Kitchen', title: 'Open Plan Kitchen', location: 'Marathahalli', image: '/images/aluminium-kitchen.png' },
   { id: 11, category: 'Construction', title: 'Residential Building', location: 'Banashankari', image: '/images/arch-3d-render.png' },
-  { id: 12, category: 'Outdoor', title: 'Rooftop Terrace', location: 'JP Nagar', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80' },
+  { id: 12, category: 'Ceiling', title: 'POP False Ceiling', location: 'JP Nagar', image: '/images/false-ceiling.png' },
 ];
 
 export function GalleryPage() {

@@ -84,13 +84,13 @@ const services = [
     link: '/service/glass-aluminium',
   },
   {
-    id: 'outdoor-structures',
-    icon: 'lucide:tree-pine',
-    title: 'Outdoor & Pergola',
-    desc: 'Beautiful terrace pergolas, garden shade structures, gates, railings, and outdoor fabrication.',
-    image: '/images/outdoor.png',
+    id: 'ceiling-designs',
+    icon: 'lucide:layers',
+    title: 'Ceiling Designs',
+    desc: 'POP false ceilings, gypsum & grid ceilings, PVC panels, POP punning, and custom drop-down cove lighting.',
+    image: '/images/false-ceiling.png',
     featured: false,
-    link: '/service/outdoor-structures',
+    link: '/service/ceiling-designs',
   },
 ];
 

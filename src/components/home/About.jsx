@@ -71,8 +71,8 @@ export function About() {
                 'Restaurant & Café Design', 'Retail Shop Fit-outs',
                 'Architectural 2D & 3D', 'Aluminium Kitchen Works',
                 'Building Construction', 'Home Renovation',
-                'Glass & Aluminium Works', 'Painting & Printing',
-                'Outdoor Structures', 'Project Management',
+                'Glass & Aluminium Works', 'Painting',
+                'False Ceiling', 'Project Management',
               ].map((item) => (
                 <div key={item} className="flex items-center gap-2.5 text-sm text-[#1F1F1F] font-medium">
                   <iconify-icon icon="lucide:check-circle-2" className="text-[#B88A2A] text-base shrink-0"></iconify-icon>

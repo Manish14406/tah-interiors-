@@ -19,7 +19,9 @@ const getServiceDetails = (id) => {
     'modular-kitchen': 'https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=1600&q=80',
     'home-renovation': 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1600&q=80',
     'glass-aluminium': 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80',
-    'outdoor-structures': '/images/outdoor.png',
+    'outdoor-structures': '/images/false-ceiling.png',
+    'ceiling-designs': '/images/false-ceiling.png',
+    'false-ceiling': '/images/false-ceiling.png',
     'gates-railings': '/images/outdoor.png',
     'printing': '/images/outdoor.png',
     'tile-marble': '/images/outdoor.png',
@@ -28,6 +30,11 @@ const getServiceDetails = (id) => {
   };
 
   const galleries = {
+    'ceiling-designs': [
+      { title: 'POP & Gypsum False Ceiling', image: '/images/false-ceiling.png' },
+      { title: 'Curved Cove & Ambient Lighting', image: '/images/ceiling-curved.png' },
+      { title: 'Drop-Down & Grid Ceiling', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80' }
+    ],
     'commercial-interior': [
       { title: 'Restaurant Interior', image: '/images/restaurant-cafe.png' },
       { title: 'Café & Coffee Shop', image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80' },

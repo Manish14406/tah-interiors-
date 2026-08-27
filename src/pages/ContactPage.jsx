@@ -172,7 +172,7 @@ ${formData.location ? `*Location:* ${formData.location}\n` : ''}*Details:* ${for
                     <option>False Ceiling & Lighting</option>
                     <option>Glass & Aluminium Works</option>
                     <option>Painting Services</option>
-                    <option>Outdoor / Pergola</option>
+                    <option>Creative Ceiling Designs</option>
                     <option>Other</option>
                   </select>
                 </div>

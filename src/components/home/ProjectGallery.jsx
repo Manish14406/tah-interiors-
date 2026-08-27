@@ -8,7 +8,7 @@ const galleryImages = [
   { id: 3,  category: 'Commercial',   title: 'Corporate Office',    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80' },
   { id: 4,  category: 'Bedroom',      title: 'Master Suite',        image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80' },
   { id: 5,  category: 'Construction', title: 'Villa Structure',     image: '/images/villa-construction.png' },
-  { id: 6,  category: 'Outdoor',      title: 'Garden Pergola',      image: '/images/garden-pergola.png' },
+  { id: 6,  category: 'Ceiling',      title: 'False Ceiling Design', image: '/images/false-ceiling.png' },
   { id: 7,  category: 'Living Room',  title: 'Minimalist Lounge',   image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&q=80' },
   { id: 8,  category: 'Commercial',   title: 'Boutique Store',      image: '/images/retail-shop.png' },
   { id: 9,  category: 'Kitchen',      title: 'Modular Kitchen',     image: '/images/aluminium-kitchen.png' },
