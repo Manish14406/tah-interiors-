@@ -68,7 +68,7 @@ export function About() {
             <div className="grid grid-cols-2 gap-3 mb-10">
               {[
                 'Residential Interiors', 'Commercial Interiors',
-                'Restaurant & Café Design', 'Retail Shop Fit-outs',
+                'Restaurant & Café Design', 'POP Works',
                 'Architectural 2D & 3D', 'Aluminium Kitchen Works',
                 'Building Construction', 'Home Renovation',
                 'Glass & Aluminium Works', 'Painting',
